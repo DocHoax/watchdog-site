@@ -18,7 +18,7 @@ export function CTASection() {
             system visibility.
           </p>
 
-          <div className="inline-block rounded-lg border border-border bg-[#0c0c0e] px-6 py-3 font-mono text-sm text-muted mb-8">
+          <div className="inline-block max-w-full overflow-x-auto rounded-lg border border-border bg-[#0c0c0e] px-4 sm:px-6 py-3 font-mono text-xs sm:text-sm text-muted mb-8">
             <span className="text-accent">$</span>{" "}
             {siteConfig.install.go}
           </div>

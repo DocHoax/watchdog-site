@@ -93,8 +93,8 @@ export function CrossPlatformSection() {
               </div>
 
               {/* Install snippet */}
-              <div className="p-4 bg-[#0c0c0e]">
-                <pre className="font-mono text-xs text-muted leading-relaxed whitespace-pre-wrap overflow-x-auto">
+              <div className="p-4 bg-[#0c0c0e] overflow-x-auto">
+                <pre className="font-mono text-xs text-muted leading-relaxed whitespace-pre-wrap break-all sm:break-normal">
                   <code>
                     <span className="text-accent">$</span>{" "}
                     {p.install}
@@ -107,21 +107,21 @@ export function CrossPlatformSection() {
 
         {/* Go install / Docker */}
         <div className="mt-8 grid gap-6 sm:grid-cols-2 max-w-3xl mx-auto">
-          <div className="rounded-lg border border-border bg-surface p-5">
+          <div className="rounded-lg border border-border bg-surface p-5 overflow-hidden">
             <h3 className="text-sm font-semibold text-foreground mb-2 font-mono">
               Go Install
             </h3>
-            <pre className="font-mono text-xs text-muted whitespace-pre-wrap">
+            <pre className="font-mono text-xs text-muted whitespace-pre-wrap break-all sm:break-normal overflow-x-auto">
               <code>
                 <span className="text-accent">$</span> {siteConfig.install.go}
               </code>
             </pre>
           </div>
-          <div className="rounded-lg border border-border bg-surface p-5">
+          <div className="rounded-lg border border-border bg-surface p-5 overflow-hidden">
             <h3 className="text-sm font-semibold text-foreground mb-2 font-mono">
               Docker
             </h3>
-            <pre className="font-mono text-xs text-muted whitespace-pre-wrap">
+            <pre className="font-mono text-xs text-muted whitespace-pre-wrap break-all sm:break-normal overflow-x-auto">
               <code>
                 <span className="text-accent">$</span>{" "}
                 {siteConfig.install.docker}
