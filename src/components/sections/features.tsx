@@ -1,61 +1,79 @@
 "use client";
 
+import type { LucideIcon } from "lucide-react";
 import { RevealSection } from "@/components/reveal-section";
+import {
+  ChartIcon,
+  SearchIcon,
+  TrendingUpIcon,
+  SettingsIcon,
+  GlobeIcon,
+  DatabaseIcon,
+  ClipboardIcon,
+  MonitorIcon,
+  RadioIcon,
+} from "@/components/icons";
 
-const capabilities = [
+interface Capability {
+  title: string;
+  description: string;
+  icon: LucideIcon;
+}
+
+const capabilities: Capability[] = [
   {
     title: "System Monitoring",
     description:
       "Real-time CPU, memory, disk, and network telemetry with per-core granularity and sparkline history.",
-    icon: "📊",
+    icon: ChartIcon,
   },
   {
     title: "Automated Diagnostics",
     description:
       "10-rule diagnostic engine checks CPU saturation, inode exhaustion, DNS latency, paging spikes, and more.",
-    icon: "🔍",
+    icon: SearchIcon,
   },
   {
     title: "Anomaly Detection",
     description:
       "Statistical anomaly detection using EWMA filtering and rolling Z-score evaluation (Z ≥ 2.5).",
-    icon: "📈",
+    icon: TrendingUpIcon,
   },
   {
     title: "Process & Service Health",
     description:
       "Process listing with sorting, filtering, and kill support. Container health monitoring for Docker environments.",
-    icon: "⚙️",
+    icon: SettingsIcon,
   },
   {
     title: "Network Diagnostics",
     description:
       "Network interface monitoring, error rate tracking, and DNS resolution latency checks.",
-    icon: "🌐",
+    icon: GlobeIcon,
   },
   {
     title: "SQLite Storage",
     description:
       "Embedded SQLite time-series database with WAL mode, background retention pruning, and metric export.",
-    icon: "💾",
+    icon: DatabaseIcon,
   },
   {
     title: "Multi-Format Reports",
     description:
       "Generate self-contained HTML reports with inline SVG sparklines, plus JSON, CSV, and terminal output.",
-    icon: "📋",
+    icon: ClipboardIcon,
   },
   {
     title: "REST API & Server",
     description:
       "Built-in REST API with authentication, TLS support, and runtime pprof profiling.",
-    icon: "🖥️",
+    icon: MonitorIcon,
   },
   {
     title: "Prometheus Integration",
     description:
       "Native /metrics endpoint for Prometheus scraping. Drop Watchdog into your existing monitoring stack.",
-    icon: "📡",
+    icon: RadioIcon,
   },
 ];
 
@@ -79,8 +97,8 @@ export function FeaturesSection() {
               key={cap.title}
               className="group rounded-lg border border-border bg-surface p-6 hover:border-accent/30 hover:bg-surface-alt transition-colors"
             >
-              <div className="text-2xl mb-3" aria-hidden="true">
-                {cap.icon}
+              <div className="mb-3" aria-hidden="true">
+                <cap.icon className="h-6 w-6 text-accent" />
               </div>
               <h3 className="text-base font-semibold text-foreground mb-2">
                 {cap.title}
