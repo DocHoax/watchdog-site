@@ -24,9 +24,9 @@ export function ArchitectureSection() {
         </div>
 
         {/* Pipeline diagram */}
-        <div className="max-w-4xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-0 items-stretch">
-            {/* Stage 1: Collectors */}
+        <div className="max-w-5xl mx-auto">
+          {/* Desktop: horizontal pipeline with arrows between stages */}
+          <div className="hidden md:flex items-stretch gap-3">
             <PipelineStage
               title="Collectors"
               items={["CPU / Memory", "Disk / Network", "Processes", "Containers"]}
@@ -36,7 +36,6 @@ export function ArchitectureSection() {
 
             <PipelineArrow />
 
-            {/* Stage 2: Analysis */}
             <PipelineStage
               title="Analysis"
               items={[
@@ -51,7 +50,6 @@ export function ArchitectureSection() {
 
             <PipelineArrow />
 
-            {/* Stage 3: Storage */}
             <PipelineStage
               title="Storage"
               items={[
@@ -66,7 +64,58 @@ export function ArchitectureSection() {
 
             <PipelineArrow />
 
-            {/* Stage 4: Output */}
+            <PipelineStage
+              title="Output"
+              items={[
+                "REST API",
+                "Prometheus /metrics",
+                "HTML / JSON / CSV",
+                "Interactive TUI",
+              ]}
+              accent="text-purple-400"
+              borderColor="border-purple-400/30"
+            />
+          </div>
+
+          {/* Mobile: vertical stack with down-arrows */}
+          <div className="flex flex-col gap-3 md:hidden">
+            <PipelineStage
+              title="Collectors"
+              items={["CPU / Memory", "Disk / Network", "Processes", "Containers"]}
+              accent="text-accent"
+              borderColor="border-accent/30"
+            />
+
+            <PipelineArrowDown />
+
+            <PipelineStage
+              title="Analysis"
+              items={[
+                "10-Rule Diagnostics",
+                "EWMA Anomaly Detection",
+                "Z-Score Evaluation",
+                "Threshold Alerts",
+              ]}
+              accent="text-status-warn"
+              borderColor="border-status-warn/30"
+            />
+
+            <PipelineArrowDown />
+
+            <PipelineStage
+              title="Storage"
+              items={[
+                "SQLite WAL Database",
+                "Time-Series Metrics",
+                "Alert Event Log",
+                "Retention Pruning",
+              ]}
+              accent="text-status-ok"
+              borderColor="border-status-ok/30"
+            />
+
+            <PipelineArrowDown />
+
             <PipelineStage
               title="Output"
               items={[
@@ -126,7 +175,7 @@ function PipelineStage({
 }) {
   return (
     <div
-      className={`rounded-lg border ${borderColor} bg-surface p-5 flex flex-col`}
+      className={`flex-1 min-w-0 rounded-lg border ${borderColor} bg-surface p-5 flex flex-col`}
     >
       <h3 className={`text-sm font-semibold ${accent} mb-3 font-mono`}>
         {title}
@@ -143,9 +192,10 @@ function PipelineStage({
   );
 }
 
+/** Horizontal arrow for the desktop layout. */
 function PipelineArrow() {
   return (
-    <div className="hidden md:flex items-center justify-center px-1">
+    <div className="flex items-center justify-center shrink-0 w-6">
       <svg
         width="24"
         height="24"
@@ -157,6 +207,26 @@ function PipelineArrow() {
         aria-hidden="true"
       >
         <path d="M5 12h14M13 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    </div>
+  );
+}
+
+/** Vertical arrow for the mobile layout. */
+function PipelineArrowDown() {
+  return (
+    <div className="flex items-center justify-center h-6">
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        className="text-border"
+        aria-hidden="true"
+      >
+        <path d="M12 5v14M6 13l6 6 6-6" strokeLinecap="round" strokeLinejoin="round" />
       </svg>
     </div>
   );
